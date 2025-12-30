@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Twitter Signup</title>
+    <script>
+        function validateForm() {
+            let username = document.getElementById('username').value;
+            let email = document.getElementById('email').value;
+            let pass = document.getElementById('password').value;
+            if(username == "" || email == "" || pass == "") {
+                alert("All fields are required");
+                return false;
+            }
+               if(!/^[A-Za-z0-9_]+$/.test(username)) {
+                alert("Username can only contain letters, numbers, and underscores");
+                return false;
+            }
+
+            let emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+            if(!emailPattern.test(email)) {
+                alert("Enter a valid email");
+                return false;
+            }
+
+            if(pass.length < 5) {
+                alert("Password must be at least 5 characters");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+<h2>Twitter Signup Clone</h2>
+<form action="signup.php" method="post" onsubmit="return validateForm()">
+    <input type="hidden" name="platform" value="Twitter">
+    Username: <input type="text" name="username" id="username"><br><br>
+    Email: <input type="text" name="email" id="email"><br><br>
+    Password: <input type="password" name="password" id="password"><br><br>
+    <input type="submit" value="Sign Up">
+</form>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Facebook Signup</title>
+    <script>
+        function validateForm() {
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+            let pass = document.getElementById('password').value;
+            if(name == "" || email == "" || pass == "") {
+                alert("All fields are required");
+                return false;
+            }
+              if(!/^[A-Za-z ]+$/.test(name)) {
+                alert("Name can only contain letters");
+                return false;
+            }
+
+            let emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+            if(!emailPattern.test(email)) {
+                alert("Enter a valid email");
+                return false;
+            }
+
+            if(pass.length < 5) {
+                alert("Password must be at least 5 characters");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+<h2>Facebook Signup Clone</h2>
+<form action="signup.php" method="post" onsubmit="return validateForm()">
+    <input type="hidden" name="platform" value="Facebook">
+    Name: <input type="text" name="fullname" id="name"><br><br>
+    Email: <input type="text" name="email" id="email"><br><br>
+    Password: <input type="password" name="password" id="password"><br><br>
+    <input type="submit" value="Sign Up">
+</form>
+</body>
+</html>
